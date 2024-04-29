@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -18,6 +19,35 @@ const Register = () => {
         createUser(email, password)
         .then(result => {
             console.log(result.user)
+            const createdAt = result.user?.metadata?.creationTime;
+            const user = { email, createdAt : createdAt }
+            fetch('http://localhost:5001/user', {
+            method: 'POST',
+            headers: {
+              'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(user)
+            })
+            .then(res => res.json())
+            .then(data => {
+              if(data.insertedId) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Your Registration successfull",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }else{
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Something went wrong!",
+                  footer: '<a href="#">Why do I have this issue?</a>'
+                });
+              }
+
+            })
         })
         .then(error => {
             console.log(error)

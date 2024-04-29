@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthProvider/AuthProvider";
 
 
 
 const Login = () => {
   const {signIn, googleLogin, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  console.log(location)
   const handleLogin = e => {
     e.preventDefault();
     const email = e.target.email.value;

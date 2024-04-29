@@ -14,6 +14,7 @@ import CardDetails from './components/CardDetails';
 import CraftItem from './components/CraftItem';
 import DbCraftCards from './components/DbCraftCards';
 import UpdateCraft from './components/UpdateCraft';
+import PrivateRout from './components/PrivateRout';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <PrivateRout> <Home></Home></PrivateRout>
       },
       {
         path: "/login",
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/craft',
-        element: <DbCraftCards></DbCraftCards>,
+        element: <PrivateRout><DbCraftCards></DbCraftCards></PrivateRout>,
         loader: () => fetch('http://localhost:5001/craft')
       },
       {
