@@ -36,6 +36,8 @@ window.addEventListener('scroll', handleScroll)
       <li><NavLink to="/login">Login</NavLink></li>
       <li><NavLink to="/register">Register</NavLink></li>
       <li><NavLink to="/">Home Page</NavLink></li>      
+      <li><NavLink to="/craftItem">Add Craft Item</NavLink></li>      
+      <li><NavLink to="/craft">Craft Cards</NavLink></li>      
     </>
 
 

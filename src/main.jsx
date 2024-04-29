@@ -11,6 +11,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AuthProvider from './components/AuthProvider/AuthProvider';
 import CardDetails from './components/CardDetails';
+import CraftItem from './components/CraftItem';
+import DbCraftCards from './components/DbCraftCards';
+import UpdateCraft from './components/UpdateCraft';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,20 @@ const router = createBrowserRouter([
         path: '/craft/:id',
         element: <CardDetails></CardDetails>,
         loader: () => fetch("/craftCard.json")
+      },
+      {
+        path:"/craftItem",
+        element:<CraftItem></CraftItem>
+      },
+      {
+        path: '/craft',
+        element: <DbCraftCards></DbCraftCards>,
+        loader: () => fetch('http://localhost:5001/craft')
+      },
+      {
+        path: '/updateCraft/:id',
+        element: <UpdateCraft></UpdateCraft>,
+        loader: ({params}) => fetch(`http://localhost:5001/craft/${params.id}`)
       }
     ]
   },
