@@ -5,7 +5,7 @@ import { AuthContext } from "./AuthProvider/AuthProvider";
 
 
 const Login = () => {
-  const {signIn, googleLogin, setUser } = useContext(AuthContext);
+  const {signIn, googleLogin, setUser,githubLogin } = useContext(AuthContext);
   const location = useLocation();
   console.log(location)
   const handleLogin = e => {
@@ -30,6 +30,16 @@ const Login = () => {
     .catch(error => {
       console.log(error)
     })
+  }
+
+  const handleGithub = () => {
+    githubLogin()
+   .then(result => {
+    setUser(result.user)
+   })
+   .catch(error => {
+    console.log(error)
+   })
   }
 
 
@@ -59,9 +69,15 @@ const Login = () => {
           <button className="btn btn-primary">Login</button>
         </div>
       </form>
-      <div>
-        <button onClick={handleGoogleLogin} className="btn btn-primary">Google Login</button>
-      </div>
+      <div className="flex justify-around">
+            <button
+            onClick={()=> googleLogin()}
+            className="btn btn-secondary ">Google Login</button>
+            <button
+            onClick={()=> githubLogin()}
+            className="btn btn-primary ">Github Login</button>
+        </div>
+
       <div className="text-center mb-4">
         <p>New Here? Go to <Link to="/register">
         <span className="text-2xl text-sky-700 font-bold ml-4 border-spacing-2">Register</span>

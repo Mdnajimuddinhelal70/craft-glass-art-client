@@ -24,21 +24,3 @@ export default Banner;
 
 
 
-
-// // carft imag
-// https://i.ibb.co/zbJHS75/top-view-christmas-gift-with-tree-decorations.jpg
-// https://i.ibb.co/SyTZzXB/top-view-essentials-crafting-christmas-gift-with-scissors.jpg
-// https://i.ibb.co/rtMHVcn/top-view-origami-craft-paint-tube-paintbrush-straw-colored-paper.jpg
-
-// // glass imag
-// https://i.ibb.co/990N2SF/pexels-sohelpatel-1804035.jpg
-// https://i.ibb.co/n7pHKZr/pexels-stephanthem-928854.jpg
-// https://i.ibb.co/SXzM1Kd/images-1.jpg
-// //paper craft
-// Origami
-// Papercutting
-// Quilling
-
-// //Glassblowing
-// Stained glass
-// Fused glass art
