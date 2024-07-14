@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
+  const navigete = useNavigate();
   console.log(location);
 
   const handleLogin = (e) => {
@@ -17,6 +18,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
+        navigete('/')
       })
       .catch((error) => {
         console.error(error);
@@ -24,8 +26,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-blue-200">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-blue-200 ">
+      <div className="w-full max-w-md p-6 space-y-6 bg-white rounded-lg shadow-lg mt-10">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-700">Login Here!</h1>
           <p className="mt-2 text-gray-500">Welcome back! Please login to your account.</p>
@@ -57,7 +59,6 @@ const Login = () => {
               />
             </div>
           </div>
-
 
           <div>
             <button

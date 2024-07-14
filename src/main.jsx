@@ -35,23 +35,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/craft/:id',
-        element: <CardDetails></CardDetails>,
-        loader: () => fetch("/craftCard.json")
+        element: <CardDetails></CardDetails>
       },
       {
         path:"/craftItem",
         element:<CraftItem></CraftItem>
       },
-      {
-        path: '/craft',
-        element: <DbCraftCards></DbCraftCards>,
-        loader: () => fetch('http://localhost:5001/craft')
-      },
-      {
-        path: '/updateCraft/:id',
-        element: <UpdateCraft></UpdateCraft>,
-        loader: ({params}) => fetch(`http://localhost:5001/craft/${params.id}`)
-      }
     ]
   },
 ]);
