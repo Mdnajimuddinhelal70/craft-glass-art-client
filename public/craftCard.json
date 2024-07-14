@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        
         "name": "Paper craft",
         "title": "Origami crane",
         "description": "Create an elegant origami crane with just a single sheet of paper. This classic paper folding technique is perfect for beginners and experienced crafters alike.",
@@ -9,7 +9,7 @@
         "image": "../public/imagess/craft1.jpg"
     },
     {
-        "id": 2,
+        
         "name": "Origami",
         "title": "Christmas gift with tree decorations",
         "description": "Craft a festive Christmas gift adorned with charming tree decorations made from origami. Perfect for adding a personalized touch to your holiday presents.",
@@ -18,7 +18,7 @@
         "image": "../public/imagess/glasd1.jpg"
     },
     {
-        "id": 3,
+        
         "name": "Papercutting",
         "title": "Crafting Christmas gift with scissors",
         "description": "Use the art of papercutting to create a unique Christmas gift. Craft intricate designs with scissors and paper for a memorable present.",
@@ -27,7 +27,7 @@
         "image": "../public/imagess/craft2.jpg"
     },
     {
-        "id": 4,
+        
         "name": "Quilling",
         "title": "Paper quilling artwork",
         "description": "Explore the art of quilling to create stunning paper artwork. Roll and shape paper strips to form intricate designs that captivate the eye.",
@@ -36,7 +36,7 @@
         "image": "../public/imagess/glass2.jpg"
     },
     {
-        "id": 5,
+        
         "name": "Glassblowing",
         "title": "Top view of origami craft with paint tubes",
         "description": "Admire the beauty of glassblowing as you create unique pieces of art. Use paint tubes to add vibrant colors and textures to your glass creations.",
@@ -45,7 +45,7 @@
         "image": "../public/imagess/craft3.jpg"
     },
     {
-        "id": 6,
+        
         "name": "Stained glass",
         "title": "Paper cutting artwork",
         "description": "Discover the beauty of stained glass as you craft intricate designs with paper cutting techniques. Perfect for adding a touch of elegance to any space.",

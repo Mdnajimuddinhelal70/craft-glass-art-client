@@ -7,7 +7,7 @@ const Cards = () => {
     const [crafts, setCrafts] = useState([])
 
     useEffect(() => {
-     fetch('craftCard.json')
+     fetch('http://localhost:5000/crafts')
      .then(res => res.json())
      .then(data => setCrafts(data))
     }, [])

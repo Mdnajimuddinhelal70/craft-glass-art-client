@@ -4,15 +4,35 @@ import { AuthContext } from "./AuthProvider/AuthProvider";
 
 const SocialLogin = () => {
     const {googleLogin, githubLogin} = useContext(AuthContext)
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+        .then(result => {
+            console.log(result)
+        })
+        .then(error => {
+            console.log(error)
+        })
+    }
+    const handleGithubLogin = () => {
+        githubLogin()
+        .then(result => {
+            console.log(result)
+        })
+        .then(error => {
+            console.log(error)
+        })
+    }
+
     return (
         <>
         <div className="flex justify-around">
             <button
-            onClick={()=> googleLogin()}
-            className="btn btn-secondary ">Google Login</button>
+            onClick={handleGoogleLogin}
+            className="btn btn-outline">Google Login</button>
             <button
-            onClick={()=> githubLogin()}
-            className="btn btn-primary ">Github Login</button>
+            onClick={handleGithubLogin}
+            className="btn btn-outline">Github Login</button>
         </div>
        </>
     );

@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/craft',
-        element: <PrivateRout><DbCraftCards></DbCraftCards></PrivateRout>,
+        element: <DbCraftCards></DbCraftCards>,
         loader: () => fetch('http://localhost:5001/craft')
       },
       {

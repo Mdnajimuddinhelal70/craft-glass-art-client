@@ -1,92 +1,85 @@
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthProvider/AuthProvider";
-
-
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
-  const {signIn, googleLogin, setUser,githubLogin } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location)
-  const handleLogin = e => {
+  console.log(location);
+
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const password = e.target.password.value
-    console.log(email, password)
+    const password = e.target.password.value;
+    console.log(email, password);
+
     signIn(email, password)
-    .then(result => {
-      console.log(result.user)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  const handleGoogleLogin = () => {
-    googleLogin()
-    .then(result => {
-     setUser(result.user)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
-
-  const handleGithub = () => {
-    githubLogin()
-   .then(result => {
-    setUser(result.user)
-   })
-   .catch(error => {
-    console.log(error)
-   })
-  }
-
-
-    return (
-        <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col ">
-      <div className="text-center">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-     
-    </div>
-    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form onSubmit={handleLogin} className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-blue-200">
+      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-gray-700">Login Here!</h1>
+          <p className="mt-2 text-gray-500">Welcome back! Please login to your account.</p>
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-         
-        </div>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
-        </div>
-      </form>
-      <div className="flex justify-around">
+        <form onSubmit={handleLogin} className="mt-8 space-y-6">
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="email-address" className="sr-only">Email address</label>
+              <input
+                id="email-address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+              />
+            </div>
+            <div className="mt-4">
+              <label htmlFor="password" className="sr-only">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+
+
+          <div>
             <button
-            onClick={()=> googleLogin()}
-            className="btn btn-secondary ">Google Login</button>
-            <button
-            onClick={()=> githubLogin()}
-            className="btn btn-primary ">Github Login</button>
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+        <SocialLogin />
+        <div className="text-center mt-4">
+          <p className="text-gray-600">
+            New Here?{" "}
+            <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+              Register
+            </Link>
+          </p>
         </div>
-
-      <div className="text-center mb-4">
-        <p>New Here? Go to <Link to="/register">
-        <span className="text-2xl text-sky-700 font-bold ml-4 border-spacing-2">Register</span>
-        </Link></p>
       </div>
     </div>
-  </div>
-</div>
-    );
+  );
 };
 
 export default Login;
