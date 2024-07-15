@@ -59,9 +59,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/craftItem">Add Craft Item</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/craft">Craft Cards</NavLink>
-      </li>
+      </li> */}
     </>
   );
 

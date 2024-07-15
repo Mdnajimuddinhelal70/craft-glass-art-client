@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CraftCards from "./CraftCards";
+import { data } from 'autoprefixer';
 
 
 const Cards = () => {
@@ -10,13 +11,17 @@ const Cards = () => {
      fetch('http://localhost:5000/crafts')
      .then(res => res.json())
      .then(data => setCrafts(data))
+     console.log(data)
     }, [])
  
     return (
         
-        <div>
+        <div className="grid grid-cols-2 gap-6 mx-auto justify-center items-center">
         {
-            crafts.map(craft => <CraftCards key={Math.random} craft={craft}></CraftCards>)
+            crafts?.map(craft => <CraftCards
+                 key={Math.random} 
+                 craft={craft}              
+                 ></CraftCards>)
         }
         </div>
        

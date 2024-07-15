@@ -3,9 +3,9 @@
 const HomeCard = () => {
   return (
     <>
-      <div className="max-w-screen-2xl mt-10 max-auto md:px-20 px-4">
+      <div className="max-w-screen-2xl mt-16 max-auto md:px-20 px-4">
         <div>
-          <h1 className="font-semibold text-3xl pb-2">
+          <h1 className="font-semibold text-3xl pb-2 text-center">
             Paper Crafts & Glass Art Items
           </h1>
           <p>
