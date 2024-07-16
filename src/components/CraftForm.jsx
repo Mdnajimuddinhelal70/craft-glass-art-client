@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider/AuthProvider";
 
 const CraftForm = () => {
+  const { user } = useContext(AuthContext) || {};
   const handleCraft = (e) => {
     e.preventDefault();
     const image = e.target.image.value;
@@ -10,6 +13,7 @@ const CraftForm = () => {
     const rating = e.target.rating.value;
     const description = e.target.description.value;
     const processingTime = e.target.processingTime.value;
+    const email = user.email;
     const newCraft = {
       image,
       itemName,
@@ -18,11 +22,12 @@ const CraftForm = () => {
       rating,
       processingTime,
       description,
+      email,
     };
     console.log(newCraft);
 
     //   data sending from server
-    fetch("http://localhost:5001/craft", {
+    fetch("http://localhost:5000/formProduct", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
