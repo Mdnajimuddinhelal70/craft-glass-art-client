@@ -9,6 +9,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import CardDetails from "../components/CardDetails";
 import CraftItem from "../components/CraftItem";
+import AddCraftsList from "../components/AddCraftsList/AddCraftsList";
 
 
   export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ import CraftItem from "../components/CraftItem";
           {
             path: "/craftItem",
             element: <CraftItem></CraftItem>,
+          },
+          {
+            path: "/addLsit",
+            element: <AddCraftsList />,
           },
         ],
       },
