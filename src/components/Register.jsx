@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "./AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import SocialLogin from "./SocialLogin";
+import { AuthContext } from "./AuthProvider/AuthProvider";
+import SocialLogin from "./SocialLogin"; // Import SocialLogin component
+import { Link, useNavigate } from "react-router-dom"; // Import Link component
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -18,42 +18,17 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user);
-        const createdAt = result.user?.metadata?.creationTime;
-        const user = { email, createdAt: createdAt };
-        return fetch('http://localhost:5001/user', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(user)
+        navigate('/')
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Registration successful",
+          showConfirmButton: false,
+          timer: 1500
         });
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Your Registration was successful",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Something went wrong!",
-            footer: '<a href="#">Why do I have this issue?</a>'
-          });
-        }
       })
       .catch(error => {
         console.log(error);
-        Swal.fire({
-          icon: "error",
-          title: "Registration Failed",
-          text: "Please try again later.",
-        });
       });
   };
 

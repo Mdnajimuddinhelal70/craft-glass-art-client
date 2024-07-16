@@ -44,7 +44,9 @@ import AddCraftsList from "../components/AddCraftsList/AddCraftsList";
           },
           {
             path: "/addLsit",
-            element: <AddCraftsList />,
+            element: <PrivateRout>
+              <AddCraftsList />
+            </PrivateRout>,
           },
         ],
       },
