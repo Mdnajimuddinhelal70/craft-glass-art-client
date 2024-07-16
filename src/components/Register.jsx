@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider/AuthProvider";
-import SocialLogin from "./SocialLogin"; // Import SocialLogin component
-import { Link, useNavigate } from "react-router-dom"; // Import Link component
+import SocialLogin from "./SocialLogin"; 
+import { Link, useNavigate } from "react-router-dom"; 
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -18,6 +18,7 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user);
+        updateUserProfile(name, photo)
         navigate('/')
         Swal.fire({
           position: "top-end",

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
@@ -7,6 +7,8 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
   const navigete = useNavigate();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   console.log(location);
 
   const handleLogin = (e) => {
@@ -18,6 +20,8 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
+        setEmail("")
+        setPassword("")
         navigete('/')
       })
       .catch((error) => {
