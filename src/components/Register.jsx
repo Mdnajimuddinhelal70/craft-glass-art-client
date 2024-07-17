@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider/AuthProvider";
-import SocialLogin from "./SocialLogin"; 
-import { Link, useNavigate } from "react-router-dom"; 
+import SocialLogin from "./SocialLogin";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,21 +19,40 @@ const Register = () => {
     const photo = e.target.photo.value;
     console.log(name, email, password, photo);
 
+    // Password validation
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long!");
+      return;
+    }
+    if (!uppercaseRegex.test(password)) {
+      setError("Password must contain at least one uppercase letter!");
+      return;
+    }
+    if (!lowercaseRegex.test(password)) {
+      setError("Password must contain at least one lowercase letter!");
+      return;
+    }
+
+    setError(""); // Clear any existing error
     createUser(email, password)
-      .then(result => {
+      .then((result) => {
         console.log(result.user);
-        updateUserProfile(name, photo)
-        navigate('/')
+        updateUserProfile(name, photo);
+        navigate("/");
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "User Registration successful",
+          title: "User registration successful",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
   };
 
@@ -66,17 +89,27 @@ const Register = () => {
                 placeholder="Email address"
               />
             </div>
-            <div className="mt-4">
+            <div className="mt-4 relative">
               <label htmlFor="password" className="sr-only">Password</label>
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 autoComplete="current-password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
+              <div className="absolute inset-y-0 right-0 flex items-center px-2">
+                <button
+                  type="button"
+                  className="focus:outline-none"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+              {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
             </div>
             <div className="mt-4">
               <label htmlFor="photo" className="sr-only">Photo URL</label>
