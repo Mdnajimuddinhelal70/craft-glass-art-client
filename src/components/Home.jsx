@@ -1,6 +1,7 @@
 import Client from "../Client/Client";
 import Banner from "./Banner";
 import Cards from "./Cards";
+import Help from "./Help/Help";
 import HomeCard from "./HomeCard";
 
 
@@ -12,6 +13,7 @@ const Home = () => {
             <HomeCard></HomeCard>
            <Cards></Cards>
            <Client />
+           <Help />
         </div>
     );
 };

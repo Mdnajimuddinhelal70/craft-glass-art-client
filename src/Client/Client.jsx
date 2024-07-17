@@ -16,7 +16,7 @@ const Client = () => {
         <h1 className="text-2xl">Our client</h1>
         <p>The arts and crafts movement began in the late 19th century in Britain, as a reaction against the industrial revolution and the mass production of goods. It emphasized traditional craftsmanship and the beauty of handmade items.</p>
     </div>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 mt-8">
         {client.map((item) => (
           <div
             key={Math.random}
