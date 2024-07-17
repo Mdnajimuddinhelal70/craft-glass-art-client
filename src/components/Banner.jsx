@@ -1,26 +1,59 @@
-import banner from "../../public/bannerImg.jpg"
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
 const Banner = () => {
-    return (
-        <>
-        <div className="max-w-screen-2xl container max-auto md:px-20 px-4 flex flex-col md:flex-row gap-7 my-10">
-            <div className="w-full order-2 md:order-1 md:w-1/2 mt-12 md:mt-32">
-               <div className="space-y-12">
-               <h1 className="text-4xl font-bold">Paper crafts encompass a wide range of <span className="text-pink-700">techniques</span></h1>
-                <p className="text-xl">Glass art, on the other hand, involves working with molten glass to create stunning sculptures, vessels, and decorative objects. Glassblowing is perhaps the most well-known form of glass art, requiring skill, precision, and a deep understanding of the properties of glass. </p>
-               </div>
+  const spanStyle = {
+    padding: "40px",
+    background: "#efefef",
+    color: "#000000",
+  };
+
+  const divStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundSize: "cover",
+    height: "600px",
+  };
+  const slideImages = [
+    {
+      url: "https://i.ibb.co/b3yrSMX/craftB6.jpg",
+      caption:
+        "The process of creating fabric by interlacing threads on a loom. Techniques include tapestry weaving, plain weave, and twill.",
+    },
+    {
+      url: "https://i.ibb.co/VTtJjjF/craftB4.jpg",
+      caption:
+        "Crafting items from wood, using techniques like carving, joinery, and turning. Common items include furniture, toys, and decorative objects.",
+    },
+    {
+      url: "https://i.ibb.co/2kd6Yzj/dxkok.jpg",
+      caption:
+        "The process of creating fabric by interlacing threads on a loom. Techniques include tapestry weaving, plain weave, and twill.",
+    },
+  ];
+  return (
+    <>
+      <div className="slide-container mt-20">
+        <Slide>
+          {slideImages.map((slideImage, index) => (
+            <div key={index}>
+              <div
+                style={{
+                  ...divStyle,
+                  backgroundImage: `url(${slideImage.url})`,
+                }}
+              >
+                <span className="bg-slate-500">
+                 
+                </span>
+              </div>
             </div>
-            <div  className="w-full order-1 md:w-1/2">
-                <img src={banner} className="w-88 h-92 mt-12 rounded-lg md:mt-32" alt="" />
-            </div>
-        </div>
-        </>
-    );
+          ))}
+        </Slide>
+      </div>
+    </>
+  );
 };
 
 export default Banner;
-
-
-
-
-
