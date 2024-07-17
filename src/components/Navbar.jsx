@@ -63,6 +63,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/addLsit">All Art & Craft Items</NavLink>
       </li>
+      <li>
+        <NavLink to="/craftList">My Art&Craft List</NavLink>
+      </li>
      
     </>
   );

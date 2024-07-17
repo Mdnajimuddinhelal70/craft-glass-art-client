@@ -37,9 +37,7 @@ const AddListDetails = () => {
             <p className="text-gray-600">Stock Status: <span className="font-medium">{cardDetails.stockStatus}</span></p>
             <p className="text-gray-600">Email: <span className="font-medium">{cardDetails.email}</span></p>
           </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
-          </div>
+         
         </div>
       </div>
     </div>

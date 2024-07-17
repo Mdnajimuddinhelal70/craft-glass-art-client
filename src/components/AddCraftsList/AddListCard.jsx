@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const AddListCard = ({ craft, index }) => {
   const {_id, image, itemName, price } = craft;
   return (
-    <div className="flex justify-center my-4">
+    <div className="flex justify-center my-4 mt-12">
       <table className="w-full max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
         <thead className="bg-gray-200">
           <tr>

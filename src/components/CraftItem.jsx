@@ -3,8 +3,7 @@ import CraftForm from "./CraftForm";
 
 const CraftItem = () => {
     return (
-        <div>
-            <h1>Fill the form</h1>
+        <div>       
             <CraftForm></CraftForm>
         </div>
     );
