@@ -18,8 +18,8 @@ const AddCraftsList = () => {
 
   return (
     <div>
-      {craftList.map((craft) => (
-        <AddListCard key={craft._id} craft={craft} />
+      {craftList.map((craft, index) => (
+        <AddListCard key={craft._id} craft={craft} index={index} />
       ))}
     </div>
   );

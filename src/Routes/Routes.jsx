@@ -11,6 +11,7 @@ import CardDetails from "../components/CardDetails";
 import CraftItem from "../components/CraftItem";
 import AddCraftsList from "../components/AddCraftsList/AddCraftsList";
 import HelpDetails from "../components/Help/HelpDetails";
+import AddListDetails from "../components/AddCraftsList/AddListDetails";
 
 
   export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ import HelpDetails from "../components/Help/HelpDetails";
           {
             path: "/craftItem",
             element: <CraftItem></CraftItem>,
+          },
+          {
+            path: "/addListDetails/:id",
+            element: <AddListDetails></AddListDetails>,
           },
           {
             path: "/help",

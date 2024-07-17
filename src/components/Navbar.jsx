@@ -61,7 +61,7 @@ const Navbar = () => {
       </li>
      
       <li>
-        <NavLink to="/addLsit">My Art&Craft List</NavLink>
+        <NavLink to="/addLsit">All Art & Craft Items</NavLink>
       </li>
      
     </>
