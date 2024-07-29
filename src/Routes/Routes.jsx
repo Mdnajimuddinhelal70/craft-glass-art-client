@@ -11,12 +11,14 @@ import HelpDetails from "../components/Help/HelpDetails";
 import AddListDetails from "../components/AddCraftsList/AddListDetails";
 import MyCraftList from "../components/MyCraftList/MyCraftList";
 import MyListUpdate from "../components/MyCraftList/MyListUpdate";
-
+import ErrorPage from "./../ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+
     element: <Root></Root>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
