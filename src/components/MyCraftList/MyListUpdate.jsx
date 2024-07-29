@@ -9,6 +9,7 @@ const UpdateCraftForm = () => {
   const { user } = useContext(AuthContext) || {};
   const [formUodate, setFormUpdate] = useState({});
 
+
   useEffect(() => {
   
     fetch(`http://localhost:5000/formUpdate/${id}`)

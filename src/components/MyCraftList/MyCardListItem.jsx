@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyCardListItem = ({ item }) => {
-    
   const {
     _id,
     image,
@@ -17,13 +17,31 @@ const MyCardListItem = ({ item }) => {
   } = item;
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/deleteCraft/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -69,7 +87,7 @@ const MyCardListItem = ({ item }) => {
               </Link>
               <button
                 onClick={() => handleDelete(_id)}
-                className="btn btn-circle"
+                className="btn btn-outline"
               >
                 Delete
               </button>

@@ -5,6 +5,7 @@ import MyCardListItem from "./MyCardListItem";
 const MyCraftList = () => {
   const { user } = useContext(AuthContext);
   const [myList, setMyList] = useState([]);
+ 
 
   useEffect(() => {
     fetch(`http://localhost:5000/myList/${user?.email}`)
@@ -20,16 +21,13 @@ const MyCraftList = () => {
   }
 
   return (
-   <>
-   <div>
-    {
-      myList?.map(item => <MyCardListItem
-      key={item._id}
-      item={item}
-      ></MyCardListItem>)
-    }
-   </div>
-   </>
+    <>
+      <div>
+        {myList?.map((item) => (
+          <MyCardListItem key={item._id} item={item}></MyCardListItem>
+        ))}
+      </div>
+    </>
   );
 };
 
