@@ -1,7 +1,4 @@
-import {
-    createBrowserRouter,
- 
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Root from "../Root/Root";
 import PrivateRout from "../components/PrivateRout";
 import Home from "../components/Home";
@@ -16,54 +13,60 @@ import MyCraftList from "../components/MyCraftList/MyCraftList";
 import MyListUpdate from "../components/MyCraftList/MyListUpdate";
 
 
-  export const router = createBrowserRouter([
-    {
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root></Root>,
+    children: [
+      {
         path: "/",
-        element: <Root></Root>,
-        children: [
-          {
-            path: "/",
-            element:  <Home></Home>
-          },
-          {
-            path: "/login",
-            element: <Login></Login>,
-          },
-          {
-            path: "/register",
-            element: <Register></Register>,
-          },
-          {
-            path: "/productDetails/:id",
-            element: <CardDetails></CardDetails>,
-          },
-          {
-            path: "/craftItem",
-            element: <CraftItem></CraftItem>,
-          },
-          {
-            path: "/addListDetails/:id",
-            element: <AddListDetails></AddListDetails>,
-          },
-          {
-            path: "/myLitsUpdate/:id",
-            element: <MyListUpdate></MyListUpdate>,
-          },
-
-          {
-            path: "/help",
-            element: <HelpDetails></HelpDetails>,
-          },
-          {
-            path: "/craftList",
-            element: <MyCraftList></MyCraftList>,
-          },
-          {
-            path: "/addLsit",
-            element: <PrivateRout>
-              <AddCraftsList />
-            </PrivateRout>,
-          },
-        ],
+        element: <Home></Home>,
       },
-  ]);
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/productDetails/:id",
+        element: <CardDetails></CardDetails>,
+      },
+      {
+        path: "/craftItem",
+        element: (
+          <PrivateRout>
+            <CraftItem></CraftItem>
+          </PrivateRout>
+        ),
+      },
+      {
+        path: "/addListDetails/:id",
+        element: <AddListDetails></AddListDetails>,
+      },
+      {
+        path: "/myLitsUpdate/:id",
+        element: <MyListUpdate></MyListUpdate>,
+      },
+
+      {
+        path: "/help",
+        element: <HelpDetails></HelpDetails>,
+      },
+      {
+        path: "/craftList",
+        element: <MyCraftList></MyCraftList>,
+      },
+      {
+        path: "/addLsit",
+        element: (
+          <PrivateRout>
+            <AddCraftsList />
+          </PrivateRout>
+        ),
+      },
+    ],
+  },
+]);

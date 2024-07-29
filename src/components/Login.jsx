@@ -1,14 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
   const navigete = useNavigate();
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   console.log(location);
 
   const handleLogin = (e) => {
@@ -20,9 +19,14 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-        setEmail("")
-        setPassword("")
-        navigete('/')
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigete("/");
       })
       .catch((error) => {
         console.error(error);
@@ -34,29 +38,33 @@ const Login = () => {
       <div className="w-full max-w-md p-6 space-y-6 bg-white rounded-lg shadow-lg mt-10">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-700">Login Here!</h1>
-          <p className="mt-2 text-gray-500">Welcome back! Please login to your account.</p>
+          <p className="mt-2 text-gray-500">
+            Welcome back! Please login to your account.
+          </p>
         </div>
         <form onSubmit={handleLogin} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="email-address" className="sr-only">Email address</label>
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
               <input
                 id="email-address"
                 name="email"
                 type="email"
-                autoComplete="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
             </div>
             <div className="mt-4">
-              <label htmlFor="password" className="sr-only">Password</label>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
                 type="password"
-                autoComplete="current-password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
@@ -77,7 +85,10 @@ const Login = () => {
         <div className="text-center mt-4">
           <p className="text-gray-600">
             New Here?{" "}
-            <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link
+              to="/register"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
               Register
             </Link>
           </p>
