@@ -1,8 +1,19 @@
-# React + Vite
+# Craft Ans Glass Arts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Visit my live site: [Craft Ans Glass Arts](https://your-live-site-url.com)
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Craft Ans Glass Arts is a platform dedicated to showcasing the beauty and intricacy of crafts and glass art. Our mission is to inspire creativity and provide a space for artisans to display their unique creations.
+
+## Features
+
+- **Gallery of Artworks**: A curated gallery showcasing stunning crafts and glass art pieces from various artists.
+- **Artist Profiles**: Detailed profiles of featured artists, including their biographies and portfolios.
+- **Tutorials and Workshops**: Step-by-step tutorials and information on upcoming workshops to help you learn and enhance your crafting skills.
+- **Community Forum**: A supportive community forum where artists and enthusiasts can share ideas, ask questions, and provide feedback.
+- **E-commerce Integration**: A marketplace for artists to sell their creations directly to customers.
+
+## Category
+
+Arts and Crafts

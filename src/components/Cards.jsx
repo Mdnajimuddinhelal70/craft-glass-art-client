@@ -16,7 +16,7 @@ const Cards = () => {
  
     return (
         
-        <div className="grid grid-cols-3">
+        <div className="md:grid grid-cols-3">
         {
             crafts?.map(craft => <CraftCards
                  key={Math.random} 
