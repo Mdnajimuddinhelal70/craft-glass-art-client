@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const MyCardListItem = ({ item }) => {
+  const [items, setItems] = useState([item]);
+
   const {
     _id,
     image,
@@ -16,7 +19,9 @@ const MyCardListItem = ({ item }) => {
     email,
   } = item;
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, event) => {
+    event.preventDefault();
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -38,26 +43,42 @@ const MyCardListItem = ({ item }) => {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
+              // Remove the item from the UI
+              setItems(items.filter((item) => item._id !== id));
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.",
+                icon: "error",
+              });
             }
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error!",
+              text: "Something went wrong.",
+              icon: "error",
+            });
           });
       }
     });
   };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="card card-side bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl w-full">
-        <figure className="w-1/2">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6 mt-16">
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-lg">
+        <figure className="w-full">
           <img
-            className="h-full w-full object-cover"
+            className="h-48 w-full object-cover"
             src={image}
             alt={itemName}
           />
         </figure>
-        <div className="card-body p-6 w-1/2">
-          <h1 className="text-2xl font-bold mb-2">{itemName}</h1>
+        <div className="p-4">
+          <h1 className="text-xl font-bold mb-2 text-gray-800">{itemName}</h1>
           <p className="text-gray-700 mb-4">{description}</p>
           <div className="mb-4">
-            <h2 className="text-xl font-semibold">Details</h2>
+            <h2 className="text-lg font-semibold text-gray-700">Details</h2>
             <p className="text-gray-600">
               User Name: <span className="font-medium">{userName}</span>
             </p>
@@ -80,18 +101,19 @@ const MyCardListItem = ({ item }) => {
             <p className="text-gray-600">
               Email: <span className="font-medium">{email}</span>
             </p>
-            <div>
-              <Link to={`/myLitsUpdate/${_id}`}>
-                {" "}
-                <button className="btn btn-accent">Update</button>
-              </Link>
-              <button
-                onClick={() => handleDelete(_id)}
-                className="btn btn-outline"
-              >
-                Delete
+          </div>
+          <div className="flex space-x-2">
+            <Link to={`/myLitsUpdate/${_id}`}>
+              <button className="bg-blue-500 text-white py-2 px-3 rounded-lg hover:bg-blue-600 transition duration-200 text-sm">
+                Update
               </button>
-            </div>
+            </Link>
+            <button
+              onClick={(event) => handleDelete(_id, event)}
+              className="border border-red-500 text-red-500 py-2 px-3 rounded-lg hover:bg-red-500 hover:text-white transition duration-200 text-sm"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>

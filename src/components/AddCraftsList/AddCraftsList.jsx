@@ -17,7 +17,7 @@ const AddCraftsList = () => {
   }, [user]);
 
   return (
-    <div>
+    <div className="mt-20 mb-20">
       {craftList.map((craft, index) => (
         <AddListCard key={craft._id} craft={craft} index={index} />
       ))}

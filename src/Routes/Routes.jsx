@@ -34,7 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/productDetails/:id",
-        element: <CardDetails></CardDetails>,
+        element: (
+          <PrivateRout>
+            <CardDetails></CardDetails>
+          </PrivateRout>
+        ),
       },
       {
         path: "/craftItem",

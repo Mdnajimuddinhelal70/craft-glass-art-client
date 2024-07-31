@@ -10,7 +10,7 @@ const AddListCard = ({ craft, index }) => {
             <th className="px-4 py-2"></th>
             <th className="px-4 py-2">Item</th>
             <th className="px-4 py-2">Price</th>
-            <th className="px-4 py-2"></th>
+            <th className="px-4 py-2">Details</th>
           </tr>
         </thead>
         <tbody>

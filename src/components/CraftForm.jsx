@@ -55,7 +55,7 @@ const CraftForm = () => {
 
   return (
     <div className="mt-20 mx-auto max-w-3xl">
-      <h1 className="text-3xl font-semibold text-center">
+      <h1 className="text-3xl font-semibold text-center mb-10">
         Add Your Craft Items
       </h1>
       <hr />
