@@ -12,7 +12,7 @@ const CraftForm = () => {
     const price = e.target.price.value;
     const rating = e.target.rating.value;
     const description = e.target.description.value;
-    const customization = e.target.customization.value; 
+    const customization = e.target.customization.value;
     const processingTime = e.target.processingTime.value;
     const stockStatus = e.target.stockStatus.value;
     const userName = e.target.userName.value;
@@ -24,7 +24,7 @@ const CraftForm = () => {
       price,
       rating,
       description,
-      customization, 
+      customization,
       processingTime,
       stockStatus,
       userName,
@@ -47,7 +47,7 @@ const CraftForm = () => {
             title: "Success!",
             text: "Craft item added successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Ok",
           });
         }
       });

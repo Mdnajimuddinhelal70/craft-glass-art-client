@@ -22,7 +22,7 @@ const MyCraftList = () => {
 
   return (
     <>
-      <div>
+      <div className="grid grid-cols-2">
         {myList?.map((item) => (
           <MyCardListItem key={item._id} item={item}></MyCardListItem>
         ))}

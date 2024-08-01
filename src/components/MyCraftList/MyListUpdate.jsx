@@ -49,7 +49,7 @@ const UpdateCraftForm = () => {
             title: "Success!",
             text: "Craft item updated successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Ok",
           });
         }
       });

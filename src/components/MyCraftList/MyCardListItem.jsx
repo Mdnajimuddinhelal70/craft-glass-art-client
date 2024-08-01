@@ -24,7 +24,7 @@ const MyCardListItem = ({ item }) => {
 
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "Do you want to delete this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -32,18 +32,21 @@ const MyCardListItem = ({ item }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deleteCraft/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `http://localhost:5000/deleteCraft/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Your carft has been deleted.",
                 icon: "success",
               });
-              // Remove the item from the UI
+             
               setItems(items.filter((item) => item._id !== id));
             } else {
               Swal.fire({
@@ -102,7 +105,7 @@ const MyCardListItem = ({ item }) => {
               Email: <span className="font-medium">{email}</span>
             </p>
           </div>
-          <div className="flex space-x-2">
+          <div className="flex space-x-2  justify-between">
             <Link to={`/myLitsUpdate/${_id}`}>
               <button className="bg-blue-500 text-white py-2 px-3 rounded-lg hover:bg-blue-600 transition duration-200 text-sm">
                 Update
