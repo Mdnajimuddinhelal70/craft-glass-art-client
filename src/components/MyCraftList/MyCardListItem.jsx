@@ -33,7 +33,7 @@ const MyCardListItem = ({ item }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `http://localhost:5000/deleteCraft/${id}`,
+          `https://b9-a10-asmnt-server-4ju1u6tmu-najim-uddins-projects.vercel.app/deleteCraft/${id}`,
           {
             method: "DELETE",
           }

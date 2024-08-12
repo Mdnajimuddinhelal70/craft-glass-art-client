@@ -32,14 +32,17 @@ const CraftForm = () => {
     };
     console.log(newCraft);
 
-    //   data sending to server
-    fetch("http://localhost:5000/formProduct", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCraft),
-    })
+    
+    fetch(
+      "https://b9-a10-asmnt-server-4ju1u6tmu-najim-uddins-projects.vercel.app/formProduct",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCraft),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

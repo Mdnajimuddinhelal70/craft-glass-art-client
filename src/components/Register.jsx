@@ -36,7 +36,7 @@ const Register = () => {
       return;
     }
 
-    setError(""); // Clear any existing error
+    setError(""); 
     createUser(email, password)
       .then((result) => {
         console.log(result.user);

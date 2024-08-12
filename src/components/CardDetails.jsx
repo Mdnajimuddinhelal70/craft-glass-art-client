@@ -6,7 +6,7 @@ const CardDetails = () => {
   const [craftDetails, setCraftDetails] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/productDetails/${id}`)
+    fetch(`https://b9-a10-asmnt-server-4ju1u6tmu-najim-uddins-projects.vercel.app/productDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCraftDetails(data);

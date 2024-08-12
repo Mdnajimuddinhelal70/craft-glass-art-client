@@ -7,8 +7,9 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
-  const navigete = useNavigate();
+  const navigate = useNavigate();
   console.log(location);
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigete("/");
+       navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
