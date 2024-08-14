@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CardDetails = () => {
   const { id } = useParams();
@@ -34,6 +34,9 @@ const CardDetails = () => {
           <h3 className="mt-2 text-gray-500">{craftDetails.category}</h3>
           <h4 className="mt-2 text-gray-500">{craftDetails.price}</h4>
         </div>
+        <h2>Do want to add arts and craft Items? <Link to='/craftItem'>
+         <button className="btn btn-secondary">Go Nwo</button>
+        </Link></h2>
       </div>
     </div>
   );
