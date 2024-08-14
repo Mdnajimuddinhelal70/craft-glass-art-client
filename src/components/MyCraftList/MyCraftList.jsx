@@ -7,7 +7,7 @@ const MyCraftList = () => {
   const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myList/${user?.email}`)
+    fetch(`https://b9-a10-asmnt-server.vercel.app/myList/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

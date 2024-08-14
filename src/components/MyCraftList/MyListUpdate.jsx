@@ -12,7 +12,7 @@ const UpdateCraftForm = () => {
 
   useEffect(() => {
   
-    fetch(`http://localhost:5000/formUpdate/${id}`)
+    fetch(`https://b9-a10-asmnt-server.vercel.app/formUpdate/${id}`)
       .then((res) => res.json())
       .then((data) => setFormUpdate(data));
   }, [id]);
@@ -35,7 +35,7 @@ const UpdateCraftForm = () => {
     console.log(updatedCraft);
 
    
-    fetch(`http://localhost:5000/formProductUpdate/${id}`, {
+    fetch(`https://b9-a10-asmnt-server.vercel.app/formProductUpdate/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

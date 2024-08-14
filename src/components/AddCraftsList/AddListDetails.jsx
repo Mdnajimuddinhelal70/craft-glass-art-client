@@ -6,7 +6,7 @@ const AddListDetails = () => {
   const [cardDetails, setCardDetails] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/formDetails/${id}`)
+    fetch(`https://b9-a10-asmnt-server.vercel.app/formDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

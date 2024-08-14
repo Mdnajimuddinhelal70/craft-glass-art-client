@@ -7,6 +7,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   const handleToggle = (e) => {
     if (e.target.checked) {
@@ -48,22 +49,36 @@ const Navbar = () => {
       });
   };
 
+  const toggleUserMenu = () => {
+    setShowUserMenu(!showUserMenu);
+  };
+
   const navLinks = (
     <>
       <li>
-        <NavLink to="/login" activeClassName="text-blue-500">Login</NavLink>
+        <NavLink to="/login" activeClassName="text-blue-500">
+          Login
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/" activeClassName="text-blue-500">Home Page</NavLink>
+        <NavLink to="/" activeClassName="text-blue-500">
+          Home Page
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/craftItem" activeClassName="text-blue-500">Add Craft Item</NavLink>
+        <NavLink to="/craftItem" activeClassName="text-blue-500">
+          Add Craft Item
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/addLsit" activeClassName="text-blue-500">All Art & Craft Items</NavLink>
+        <NavLink to="/addList" activeClassName="text-blue-500">
+          All Art & Craft Items
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/craftList" activeClassName="text-blue-500">My Art&Craft List</NavLink>
+        <NavLink to="/craftList" activeClassName="text-blue-500">
+          My Art & Craft List
+        </NavLink>
       </li>
     </>
   );
@@ -71,9 +86,7 @@ const Navbar = () => {
   return (
     <div
       className={`max-w-screen-2xl mx-auto px-4 fixed top-0 left-0 right-0 z-10 ${
-        sticky
-          ? "shadow-md bg-base-200 duration-300 transition-all ease-out"
-          : ""
+        sticky ? "shadow-md bg-base-200 duration-300 transition-all ease-out" : ""
       }`}
     >
       <div className="navbar bg-base-100">
@@ -132,27 +145,35 @@ const Navbar = () => {
           </label>
 
           {user ? (
-            <div className="flex items-center gap-3">
-              <button className="w-10 rounded-full">
+            <div className="relative">
+              <button
+                className="w-10 rounded-full"
+                id="userMenuButton"
+                onClick={toggleUserMenu}
+              >
                 <img
-                  alt=""
+                  alt="User Profile"
                   src={user?.photoURL}
-                  title={user?.displayName}
                   className="rounded-full"
                 />
               </button>
-              <div>
-                <button
-                  onClick={handleSignOut}
-                  className="btn btn-sm btn-ghost"
+              {showUserMenu && (
+                <div
+                  className="absolute right-0 mt-2 w-32 bg-white border rounded-md shadow-lg z-20"
+                  id="userMenu"
                 >
-                  Logout
-                </button>
-              </div>
+                  <button
+                    onClick={handleSignOut}
+                    className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
-            <Link to="/login">
-              <button className="btn btn-sm btn-primary">Login</button>
+            <Link to="/login" className="btn btn-sm">
+              Login
             </Link>
           )}
         </div>
