@@ -65,12 +65,8 @@ export const router = createBrowserRouter([
         element: <MyCraftList></MyCraftList>,
       },
       {
-        path: "/addLsit",
-        element: (
-          <PrivateRout>
-            <AddCraftsList />
-          </PrivateRout>
-        ),
+        path: "/addList",
+        element: <AddCraftsList />,
       },
     ],
   },
