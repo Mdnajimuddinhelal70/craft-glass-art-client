@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useState } from "react";
 
-const MyCardListItem = ({ item }) => {
-  const [items, setItems] = useState([item]);
 
+const MyCardListItem = ({ item, onDelete }) => {
   const {
     _id,
     image,
@@ -32,22 +30,19 @@ const MyCardListItem = ({ item }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://b9-a10-asmnt-server-4ju1u6tmu-najim-uddins-projects.vercel.app/deleteCraft/${id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:5000/deleteCraft/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your carft has been deleted.",
+                text: "Your craft has been deleted.",
                 icon: "success",
               });
              
-              setItems(items.filter((item) => item._id !== id));
+              onDelete(id); // Notify parent about the deletion
             } else {
               Swal.fire({
                 title: "Error!",
@@ -69,19 +64,19 @@ const MyCardListItem = ({ item }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6 mt-16">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-lg">
+      <div className="bg-white shadow-md rounded-lg overflow-hidden w-full max-w-sm">
         <figure className="w-full">
           <img
-            className="h-48 w-full object-cover"
+            className="h-32 w-full object-cover"
             src={image}
             alt={itemName}
           />
         </figure>
-        <div className="p-4">
-          <h1 className="text-xl font-bold mb-2 text-gray-800">{itemName}</h1>
-          <p className="text-gray-700 mb-4">{description}</p>
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold text-gray-700">Details</h2>
+        <div className="p-3">
+          <h1 className="text-lg font-bold mb-2 text-gray-800">{itemName}</h1>
+          <p className="text-gray-700 mb-2 text-sm">{description}</p>
+          <div className="mb-2 text-sm">
+            <h2 className="text-md font-semibold text-gray-700">Details</h2>
             <p className="text-gray-600">
               User Name: <span className="font-medium">{userName}</span>
             </p>
@@ -92,8 +87,7 @@ const MyCardListItem = ({ item }) => {
               Rating: <span className="font-medium">{raiting}</span>
             </p>
             <p className="text-gray-600">
-              Processing Time:{" "}
-              <span className="font-medium">{processingTime}</span>
+              Processing Time: <span className="font-medium">{processingTime}</span>
             </p>
             <p className="text-gray-600">
               Category: <span className="font-medium">{subcategoryName}</span>
@@ -105,15 +99,15 @@ const MyCardListItem = ({ item }) => {
               Email: <span className="font-medium">{email}</span>
             </p>
           </div>
-          <div className="flex space-x-2  justify-between">
+          <div className="flex space-x-2 justify-between text-sm">
             <Link to={`/myLitsUpdate/${_id}`}>
-              <button className="bg-blue-500 text-white py-2 px-3 rounded-lg hover:bg-blue-600 transition duration-200 text-sm">
+              <button className="bg-blue-500 text-white py-1 px-2 rounded-lg hover:bg-blue-600 transition duration-200">
                 Update
               </button>
             </Link>
             <button
               onClick={(event) => handleDelete(_id, event)}
-              className="border border-red-500 text-red-500 py-2 px-3 rounded-lg hover:bg-red-500 hover:text-white transition duration-200 text-sm"
+              className="border border-red-500 text-red-500 py-1 px-2 rounded-lg hover:bg-red-500 hover:text-white transition duration-200"
             >
               Delete
             </button>

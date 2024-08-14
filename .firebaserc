@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "assignment-project-730cb"
-  }
+    "default": "crafts-arts-69c44",
+    "dist": "crafts-arts-69c44"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

@@ -34,7 +34,7 @@ const CraftForm = () => {
 
     
     fetch(
-      "https://b9-a10-asmnt-server-4ju1u6tmu-najim-uddins-projects.vercel.app/formProduct",
+      "http://localhost:5000/formProduct",
       {
         method: "POST",
         headers: {
